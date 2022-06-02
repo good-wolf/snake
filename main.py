@@ -22,18 +22,18 @@ while True: #主循环
     for event in pygame.event.get():
         if event.type == pygame.QUIT:#退出事件
             pygame.quit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                square.direction('left')
+            
+            if event.key == pygame.K_RIGHT:
+                square.direction('right')
+            
+            if event.key == pygame.KEYUP:
+                square.direction('up')
 
-        if event.type == pygame.K_LEFT and event.key == pygame.K_DOWN:
-            square._left()
-        
-        if event.type == pygame.K_RIGHT and event.key == pygame.K_DOWN:
-            square._right()
-        
-        if event.type == pygame.KEYUP and event.key == pygame.K_DOWN:
-            square._up()
-
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
-            square._down()
+            if event.key == pygame.KEYDOWN:
+                square.direction('down')
 
     pygame.display.flip()#刷新屏幕
     clock.tick(60)#帧率
